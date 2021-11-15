@@ -10,8 +10,7 @@ function getRandomHexColor() {
 startBtnEl.addEventListener('click', changeColorFunc);
 
 function changeColorFunc(event) {
-  stopBtnEl.disabled = false;
-  startBtnEl.disabled = true;
+  makeBtn(stopBtnEl, startBtnEl);
   function color() {
     bodyEl.style.backgroundColor = `${getRandomHexColor()}`;
   }
@@ -21,6 +20,12 @@ stopBtnEl.addEventListener('click', stopchangeColorFunc);
 
 function stopchangeColorFunc(event) {
   clearInterval(timerId);
+  makeBtn(startBtnEl, stopBtnEl);
   startBtnEl.disabled = false;
   stopBtnEl.disabled = true;
+}
+
+function makeBtn(a, b) {
+  a.disabled = false;
+  b.disabled = true;
 }
